@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes 进化记录</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ===== HEADER ===== */
+.header {
+    text-align: center;
+    padding: 60px 0 40px;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    animation: pulse 3s ease-in-out infinite;
+    box-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
+    position: relative;
+}
+
+.avatar::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    z-index: -1;
+    animation: rotate 4s linear infinite;
+    filter: blur(8px);
+    opacity: 0.6;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.3); }
+    50% { box-shadow: 0 0 80px rgba(102, 126, 234, 0.6); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.header h1 {
+    font-size: 2.4em;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.header .subtitle {
+    color: #888;
+    font-size: 1.1em;
+    font-weight: 300;
+}
+
+.header .update-time {
+    color: #666;
+    font-size: 0.85em;
+    margin-top: 8px;
+}
+
+/* ===== STATS GRID ===== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 60px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(102, 126, 234, 0.3);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+}
+
+.stat-number {
+    font-size: 2.4em;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    color: #888;
+    font-size: 0.9em;
+    margin-top: 4px;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.3), transparent);
+}
+
+/* ===== EVOLUTION OVERVIEW ===== */
+.evolution-card {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.evo-item {
+    text-align: center;
+}
+
+.evo-icon {
+    font-size: 2em;
+    margin-bottom: 8px;
+}
+
+.evo-number {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.evo-label {
+    color: #888;
+    font-size: 0.85em;
+}
+
+/* ===== SKILLS ===== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 60px;
+}
+
+.skill-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(102, 126, 234, 0.3);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+}
+
+.skill-card:hover::before {
+    opacity: 1;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.skill-name {
+    font-weight: 500;
+    font-size: 0.95em;
+    color: #e0e0e0;
+}
+
+.skill-cat {
+    font-size: 0.75em;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 400;
+}
+
+.cat-devops { background: rgba(102, 126, 234, 0.2); color: #667eea; }
+.cat-sports { background: rgba(240, 147, 251, 0.2); color: #f093fb; }
+.cat-creative { background: rgba(118, 75, 162, 0.2); color: #764ba2; }
+.cat-research { background: rgba(72, 199, 142, 0.2); color: #48c78e; }
+.cat-productivity { background: rgba(255, 184, 108, 0.2); color: #ffb86c; }
+
+.skill-stats {
+    display: flex;
+    gap: 16px;
+    font-size: 0.8em;
+    color: #888;
+}
+
+/* ===== CATEGORY CHIPS ===== */
+.cat-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 60px;
+}
+
+.cat-chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.85em;
+    color: #ccc;
+    transition: all 0.3s ease;
+}
+
+.cat-chip:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.cat-chip strong {
+    color: #667eea;
+    margin-left: 4px;
+}
+
+/* ===== MEMORY ===== */
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 60px;
+}
+
+.memory-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.memory-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.memory-card.mem-system {
+    border-left: 3px solid #667eea;
+}
+
+.memory-card.mem-user {
+    border-left: 3px solid #f093fb;
+}
+
+.memory-label {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.mem-system .memory-label { color: #667eea; }
+.mem-user .memory-label { color: #f093fb; }
+
+.memory-number {
+    font-size: 2.4em;
+    font-weight: 700;
+    color: #e0e0e0;
+}
+
+.memory-detail {
+    color: #888;
+    font-size: 0.85em;
+    margin-top: 4px;
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 60px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg,
+        rgba(102, 126, 234, 0.5),
+        rgba(118, 75, 162, 0.3),
+        rgba(102, 126, 234, 0.05));
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -28px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #667eea;
+    border: 3px solid #1a1a2e;
+    box-shadow: 0 0 12px rgba(102, 126, 234, 0.4);
+}
+
+.future-dot {
+    background: transparent;
+    border: 2px dashed #764ba2;
+    box-shadow: none;
+}
+
+.timeline-date {
+    font-size: 0.8em;
+    color: #667eea;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.timeline-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px 20px;
+    transition: all 0.3s ease;
+}
+
+.timeline-card:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.future-card {
+    border-style: dashed;
+    opacity: 0.7;
+}
+
+.timeline-title {
+    font-weight: 500;
+    color: #e0e0e0;
+    margin-bottom: 4px;
+}
+
+.timeline-desc {
+    font-size: 0.85em;
+    color: #888;
+}
+
+/* ===== CRON ===== */
+.cron-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 60px;
+}
+
+.cron-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.cron-item:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+    transform: translateY(-2px);
+}
+
+.cron-name {
+    font-weight: 500;
+    color: #e0e0e0;
+    margin-bottom: 6px;
+}
+
+.cron-meta {
+    font-size: 0.8em;
+    color: #888;
+}
+
+/* ===== ARCHIVED ===== */
+.archived-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 60px;
+}
+
+.archived-chip {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 4px 12px;
+    font-size: 0.8em;
+    color: #666;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    color: #666;
+    font-size: 0.85em;
+}
+
+.footer a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .evolution-card { grid-template-columns: 1fr; }
+    .memory-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .cron-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.8em; }
+}
+
+@media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .container { padding: 20px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="avatar">🧬</div>
+        <h1>Hermes 进化记录</h1>
+        <div class="subtitle">AI 能力成长追踪 · 从工具到伙伴</div>
+        <div class="update-time">📅 更新于 2026-06-14 08:31 CST</div>
+    </div>
+
+    <!-- STATS GRID -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">89</div>
+            <div class="stat-label">活跃 Skills</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">21</div>
+            <div class="stat-label">能力分类</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">7</div>
+            <div class="stat-label">定时任务</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">318</div>
+            <div class="stat-label">对话会话</div>
+        </div>
+    </div>
+
+    <!-- EVOLUTION OVERVIEW -->
+    <div class="evolution-card">
+        <div class="evo-item">
+            <div class="evo-icon">🛠️</div>
+            <div class="evo-number">89+16</div>
+            <div class="evo-label">Skills 总量（活跃+归档）</div>
+        </div>
+        <div class="evo-item">
+            <div class="evo-icon">🧠</div>
+            <div class="evo-number">11.3K</div>
+            <div class="evo-label">持久记忆（系统+用户）</div>
+        </div>
+        <div class="evo-item">
+            <div class="evo-icon">🔄</div>
+            <div class="evo-number">4</div>
+            <div class="evo-label">Curator 自动维护次数</div>
+        </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section-title">🛠️ 最活跃的 Skills</div>
+    <div class="skills-grid">
+        
+        <div class="skill-card">
+            <div class="skill-header">
+                <span class="skill-name">messaging-delivery-troubleshoot</span>
+                <span class="skill-cat cat-devops">运维</span>
+            </div>
+            <div class="skill-stats">
+                <span>📖 使用 61 次</span>
+                <span>🔧 迭代 96 次</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-header">
+                <span class="skill-name">home-network</span>
+                <span class="skill-cat cat-devops">运维</span>
+            </div>
+            <div class="skill-stats">
+                <span>📖 使用 27 次</span>
+                <span>🔧 迭代 29 次</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-header">
+                <span class="skill-name">sn-image-base</span>
+                <span class="skill-cat cat-creative">创作</span>
+            </div>
+            <div class="skill-stats">
+                <span>📖 使用 24 次</span>
+                <span>🔧 迭代 11 次</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-header">
+                <span class="skill-name">cron-watchdog</span>
+                <span class="skill-cat cat-devops">运维</span>
+            </div>
+            <div class="skill-stats">
+                <span>📖 使用 22 次</span>
+                <span>🔧 迭代 10 次</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-header">
+                <span class="skill-name">youtube-monitor</span>
+                <span class="skill-cat cat-devops">运维</span>
+            </div>
+            <div class="skill-stats">
+                <span>📖 使用 22 次</span>
+                <span>🔧 迭代 19 次</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-header">
+                <span class="skill-name">xianyu-monitor</span>
+                <span class="skill-cat cat-devops">运维</span>
+            </div>
+            <div class="skill-stats">
+                <span>📖 使用 20 次</span>
+                <span>🔧 迭代 17 次</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-header">
+                <span class="skill-name">one-click-travel</span>
+                <span class="skill-cat cat-creative">创作</span>
+            </div>
+            <div class="skill-stats">
+                <span>📖 使用 16 次</span>
+                <span>🔧 迭代 12 次</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-header">
+                <span class="skill-name">agent-reach</span>
+                <span class="skill-cat cat-research">研究</span>
+            </div>
+            <div class="skill-stats">
+                <span>📖 使用 15 次</span>
+                <span>🔧 迭代 9 次</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-header">
+                <span class="skill-name">baseball-hitting-training</span>
+                <span class="skill-cat cat-sports">棒球</span>
+            </div>
+            <div class="skill-stats">
+                <span>📖 使用 13 次</span>
+                <span>🔧 迭代 8 次</span>
+            </div>
+        </div>
+        <div class="skill-card">
+            <div class="skill-header">
+                <span class="skill-name">desktop-audio-tuning</span>
+                <span class="skill-cat cat-creative">创作</span>
+            </div>
+            <div class="skill-stats">
+                <span>📖 使用 12 次</span>
+                <span>🔧 迭代 9 次</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="section-title">📂 能力分类分布</div>
+    <div class="cat-chips">
+        <span class="cat-chip">creative <strong>20</strong></span><span class="cat-chip">productivity <strong>15</strong></span><span class="cat-chip">software-development <strong>10</strong></span><span class="cat-chip">devops <strong>8</strong></span><span class="cat-chip">research <strong>5</strong></span><span class="cat-chip">media <strong>5</strong></span><span class="cat-chip">openclaw-imports <strong>3</strong></span><span class="cat-chip">sports-training <strong>3</strong></span><span class="cat-chip">autonomous-ai-agents <strong>3</strong></span><span class="cat-chip">gaming <strong>2</strong></span><span class="cat-chip">social-media <strong>2</strong></span><span class="cat-chip">data-science <strong>1</strong></span><span class="cat-chip">mlops <strong>1</strong></span><span class="cat-chip">content <strong>1</strong></span><span class="cat-chip">mcp <strong>1</strong></span><span class="cat-chip">github <strong>1</strong></span><span class="cat-chip">note-taking <strong>1</strong></span><span class="cat-chip">red-teaming <strong>1</strong></span><span class="cat-chip">messaging <strong>1</strong></span><span class="cat-chip">email <strong>1</strong></span><span class="cat-chip">smart-home <strong>1</strong></span>
+    </div>
+
+    <!-- MEMORY -->
+    <div class="section-title">🧠 持久记忆</div>
+    <div class="memory-grid">
+        <div class="memory-card mem-system">
+            <div class="memory-label">📋 系统记忆 MEMORY.md</div>
+            <div class="memory-number">8,595</div>
+            <div class="memory-detail">字符 · 83 行 · 工作流/环境/经验</div>
+        </div>
+        <div class="memory-card mem-user">
+            <div class="memory-label">👤 用户画像 USER.md</div>
+            <div class="memory-number">2,718</div>
+            <div class="memory-detail">字符 · 70 行 · 偏好/身份/习惯</div>
+        </div>
+    </div>
+
+    <!-- CRON JOBS -->
+    <div class="section-title">⏰ 定时任务 (7 活跃)</div>
+    <div class="cron-grid">
+        
+            <div class="cron-item">
+                <div class="cron-name">棒球每日简报</div>
+                <div class="cron-meta">⏰ 0 10 * * * · 📬 telegram:865938482,weixin</div>
+            </div>
+            <div class="cron-item">
+                <div class="cron-name">mlb-daily-report</div>
+                <div class="cron-meta">⏰ 0 12,21 * * * · 📬 telegram:865938482,weixin</div>
+            </div>
+            <div class="cron-item">
+                <div class="cron-name">日本打击技术学习</div>
+                <div class="cron-meta">⏰ 30 8,14,20 * * * · 📬 local</div>
+            </div>
+            <div class="cron-item">
+                <div class="cron-name">youtube-monitor</div>
+                <div class="cron-meta">⏰ 0 9,11,13,15,19,22 * * * · 📬 telegram:865938482,weixin</div>
+            </div>
+            <div class="cron-item">
+                <div class="cron-name">每日天气推送</div>
+                <div class="cron-meta">⏰ 20 7 * * * · 📬 telegram:865938482,weixin</div>
+            </div>
+            <div class="cron-item">
+                <div class="cron-name">每日系统体检</div>
+                <div class="cron-meta">⏰ 30 6 * * * · 📬 local</div>
+            </div>
+            <div class="cron-item">
+                <div class="cron-name">Gateway Watchdog</div>
+                <div class="cron-meta">⏰ */5 * * * * · 📬 local</div>
+            </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="section-title">📅 进化时间线</div>
+    <div class="timeline">
+        
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-05-31</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">Hermes 启航</div>
+                        <div class="timeline-desc">mac-migration profile 创建，Skill 体系初始化</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-06-01</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">SenseNova VLM 策略锁定</div>
+                        <div class="timeline-desc">图像视频分析强制走 SenseNova，模型独立/quota 隔离</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-06-02</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">Cron 体系成型</div>
+                        <div class="timeline-desc">9 个定时任务覆盖棒球/YouTube/天气/体检/闲鱼</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-06-03</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">AGENTS.md 规则写入</div>
+                        <div class="timeline-desc">6 条工作规则：改动边界/分步推进/交付清单/验证方法/高风险熔断/任务复盘</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-06-04</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">Skill 三级分类</div>
+                        <div class="timeline-desc">174 个 Skill 按 Core/Utility/Archive 三级管理，Curator 自动化维护</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-06-05</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">YouTube Shorts 修复</div>
+                        <div class="timeline-desc">发现 /videos 漏检 Shorts，新增 SHORTS_CHANNELS 监控</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-06-06</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">音频系统调优</div>
+                        <div class="timeline-desc">RME ADI-2 DAC + Genelec G3 完整配置，DIP/Loudness/采样率</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-06-07</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">One-Click Travel 上线</div>
+                        <div class="timeline-desc">10 城旅行指南生成，高德地图集成，双模式（Full/Fallback）</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-06-09</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">微信推送终版修复</div>
+                        <div class="timeline-desc">3 次代码提交：双重追加 bug/真限流冷却/过期防风暴</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-06-11</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">瑞幸咖啡 Skill</div>
+                        <div class="timeline-desc">MCP Server 集成，查询/点单/取餐码全流程</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-06-13</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">Curator 大规模合并</div>
+                        <div class="timeline-desc">20 个窄 Skill 吸收进 7 个伞形 Skill，归档 12 个</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-06-14</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">进化可视化页面</div>
+                        <div class="timeline-desc">创建 Evolution Dashboard，每日自动采集数据，可视化进化历程</div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!-- FUTURE -->
+    <div class="section-title">🔮 未来进化方向</div>
+    <div class="timeline">
+        
+            <div class="timeline-item future">
+                <div class="timeline-dot future-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-card future-card">
+                        <div class="timeline-title">🤖 模型分级执行</div>
+                        <div class="timeline-desc">Flash 轻量任务 + Pro/M3 重度任务，按场景自动路由</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item future">
+                <div class="timeline-dot future-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-card future-card">
+                        <div class="timeline-title">🔗 跨平台 Skill 共享</div>
+                        <div class="timeline-desc">NAS Hermes 与 Mac Hermes Skill 同步机制</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item future">
+                <div class="timeline-dot future-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-card future-card">
+                        <div class="timeline-title">📊 CBL 数据自动化</div>
+                        <div class="timeline-desc">2026 赛季打击数据自动采集 → 分析 → 报告全流程</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item future">
+                <div class="timeline-dot future-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-card future-card">
+                        <div class="timeline-title">🎓 公需科目自动化</div>
+                        <div class="timeline-desc">30 学时继续教育自动完成 + 证书下载</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item future">
+                <div class="timeline-dot future-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-card future-card">
+                        <div class="timeline-title">🧪 Self-Evolution</div>
+                        <div class="timeline-desc">DSPy + GEPA 自动优化 Skill，Agent 自我进化</div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!-- ARCHIVED -->
+    <div class="section-title">📦 已归档 Skills (16)</div>
+    <div class="archived-chips">
+        <span class="archived-chip">sn-ppt-standard</span><span class="archived-chip">sn-image-resume</span><span class="archived-chip">sn-image-doctor</span><span class="archived-chip">sn-infographic</span><span class="archived-chip">sn-da-large-file-analysis</span><span class="archived-chip">hindsight-memory</span><span class="archived-chip">sn-ppt-creative</span><span class="archived-chip">sn-ppt-entry</span><span class="archived-chip">sn-update</span><span class="archived-chip">sn-md-to-html-report</span><span class="archived-chip">sn-search-social-en</span><span class="archived-chip">sn-da-excel-workflow</span><span class="archived-chip">sn-image-imitate</span><span class="archived-chip">sn-search-social-cn</span><span class="archived-chip">sn-ppt-doctor</span><span class="archived-chip">lan-device-check</span>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>Hermes Agent · mac-migration profile · 数据每日自动更新</p>
+        <p style="margin-top: 8px; font-size: 0.8em;">
+            Powered by <a href="https://github.com/NousResearch/hermes-agent" target="_blank">Nous Research Hermes Agent</a>
+            · 始于 2026-05-31
+        </p>
+    </div>
+
+</div>
+</body>
+</html>
