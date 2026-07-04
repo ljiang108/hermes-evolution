@@ -22,454 +22,316 @@ body {
     padding: 40px 20px;
 }
 
-/* ===== HEADER ===== */
-.header {
-    text-align: center;
-    padding: 60px 0 40px;
-}
-
+/* HEADER */
+.header { text-align: center; padding: 60px 0 40px; }
 .avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin: 0 auto 24px;
+    width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 24px;
     background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    animation: pulse 3s ease-in-out infinite;
-    box-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
-    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px; animation: pulse 3s ease-in-out infinite;
+    box-shadow: 0 0 40px rgba(102, 126, 234, 0.3); position: relative;
 }
-
 .avatar::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
+    content: ''; position: absolute; inset: -4px; border-radius: 50%;
     background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-    z-index: -1;
-    animation: rotate 4s linear infinite;
-    filter: blur(8px);
-    opacity: 0.6;
+    z-index: -1; animation: rotate 4s linear infinite;
+    filter: blur(8px); opacity: 0.6;
 }
-
 @keyframes pulse {
     0%, 100% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.3); }
-    50% { box-shadow: 0 0 80px rgba(102, 126, 234, 0.6); }
+    50%      { box-shadow: 0 0 80px rgba(102, 126, 234, 0.6); }
 }
-
-@keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
+@keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 .header h1 {
-    font-size: 2.4em;
-    font-weight: 700;
+    font-size: 2.4em; font-weight: 700;
     background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 8px;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 8px;
 }
+.header .subtitle { color: #888; font-size: 1.1em; font-weight: 300; }
+.header .update-time { color: #666; font-size: 0.85em; margin-top: 8px; }
 
-.header .subtitle {
-    color: #888;
-    font-size: 1.1em;
-    font-weight: 300;
-}
-
-.header .update-time {
-    color: #666;
-    font-size: 0.85em;
-    margin-top: 8px;
-}
-
-/* ===== STATS GRID ===== */
+/* STATS */
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 60px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin-bottom: 60px;
 }
-
 .stat-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 24px;
-    text-align: center;
+    border-radius: 16px; padding: 24px; text-align: center;
     transition: all 0.3s ease;
 }
-
 .stat-card:hover {
     transform: translateY(-4px);
     border-color: rgba(102, 126, 234, 0.3);
     box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
 }
-
 .stat-number {
-    font-size: 2.4em;
-    font-weight: 700;
+    font-size: 2.4em; font-weight: 700;
     background: linear-gradient(135deg, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+.stat-label { color: #888; font-size: 0.9em; margin-top: 4px; }
 
-.stat-label {
-    color: #888;
-    font-size: 0.9em;
-    margin-top: 4px;
-}
-
-/* ===== SECTION TITLES ===== */
+/* SECTION TITLES */
 .section-title {
-    font-size: 1.6em;
-    font-weight: 600;
-    margin-bottom: 24px;
-    color: #e0e0e0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-size: 1.6em; font-weight: 600; margin-bottom: 24px; color: #e0e0e0;
+    display: flex; align-items: center; gap: 10px;
 }
-
 .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
+    content: ''; flex: 1; height: 1px;
     background: linear-gradient(90deg, rgba(102, 126, 234, 0.3), transparent);
 }
 
-/* ===== EVOLUTION OVERVIEW ===== */
+/* EVOLUTION OVERVIEW */
 .evolution-card {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
     border: 1px solid rgba(102, 126, 234, 0.2);
-    border-radius: 16px;
-    padding: 32px;
-    margin-bottom: 60px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    border-radius: 16px; padding: 32px; margin-bottom: 60px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
 }
+.evo-item { text-align: center; }
+.evo-icon { font-size: 2em; margin-bottom: 8px; }
+.evo-number { font-size: 1.8em; font-weight: 700; color: #667eea; }
+.evo-label { color: #888; font-size: 0.85em; }
 
-.evo-item {
-    text-align: center;
-}
-
-.evo-icon {
-    font-size: 2em;
-    margin-bottom: 8px;
-}
-
-.evo-number {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: #667eea;
-}
-
-.evo-label {
-    color: #888;
-    font-size: 0.85em;
-}
-
-/* ===== SKILLS ===== */
+/* ===== SKILLS (clickable) ===== */
 .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 60px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px; margin-bottom: 60px;
 }
-
 .skill-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 20px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    border-radius: 16px; padding: 0; transition: all 0.3s ease;
+    position: relative; overflow: hidden;
 }
-
 .skill-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
     background: linear-gradient(90deg, #667eea, #764ba2);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    opacity: 0; transition: opacity 0.3s ease; z-index: 2;
 }
-
-.skill-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(102, 126, 234, 0.3);
-    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+.skill-card:hover { border-color: rgba(102, 126, 234, 0.4); transform: translateY(-2px); }
+.skill-card[open]::before { opacity: 1; }
+.skill-card[open] { border-color: rgba(102, 126, 234, 0.4); }
+.skill-card > summary {
+    list-style: none; cursor: pointer; padding: 20px;
+    user-select: none;
 }
-
-.skill-card:hover::before {
-    opacity: 1;
-}
-
+.skill-card > summary::-webkit-details-marker { display: none; }
+.skill-card > summary::marker { display: none; }
+.skill-card > summary:hover { background: rgba(102, 126, 234, 0.05); }
 .skill-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
     margin-bottom: 12px;
 }
-
-.skill-name {
-    font-weight: 500;
-    font-size: 0.95em;
-    color: #e0e0e0;
-}
-
-.skill-cat {
-    font-size: 0.75em;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-weight: 400;
-}
-
-.cat-devops { background: rgba(102, 126, 234, 0.2); color: #667eea; }
-.cat-sports { background: rgba(240, 147, 251, 0.2); color: #f093fb; }
-.cat-creative { background: rgba(118, 75, 162, 0.2); color: #764ba2; }
-.cat-research { background: rgba(72, 199, 142, 0.2); color: #48c78e; }
-.cat-productivity { background: rgba(255, 184, 108, 0.2); color: #ffb86c; }
-
+.skill-name { font-weight: 500; font-size: 0.95em; color: #e0e0e0; }
+.skill-cat { font-size: 0.75em; padding: 2px 10px; border-radius: 20px; font-weight: 400; }
 .skill-stats {
-    display: flex;
-    gap: 16px;
-    font-size: 0.8em;
-    color: #888;
+    display: flex; gap: 16px; font-size: 0.8em; color: #888;
+    align-items: center; flex-wrap: wrap;
 }
+.skill-stats .hint { margin-left: auto; color: #667eea; }
+.skill-detail {
+    padding: 0 20px 20px; border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 0;
+}
+.skill-desc {
+    color: #ccc; font-size: 0.9em; line-height: 1.6;
+    margin: 14px 0 16px; padding: 12px 14px;
+    background: rgba(102, 126, 234, 0.06);
+    border-left: 3px solid #667eea; border-radius: 6px;
+}
+.skill-meta-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 8px; font-size: 0.78em;
+}
+.skill-meta-grid > div {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 8px 10px; border-radius: 6px;
+    display: flex; justify-content: space-between; gap: 8px;
+}
+.skill-meta-grid b { color: #888; font-weight: 500; }
+.skill-meta-grid span { color: #e0e0e0; }
 
-/* ===== CATEGORY CHIPS ===== */
+/* Category palette */
+.cat-devops       { background: rgba(102, 126, 234, 0.2); color: #667eea; }
+.cat-sports       { background: rgba(240, 147, 251, 0.2); color: #f093fb; }
+.cat-creative     { background: rgba(118, 75, 162, 0.2); color: #764ba2; }
+.cat-research     { background: rgba(72, 199, 142, 0.2); color: #48c78e; }
+.cat-productivity { background: rgba(255, 184, 108, 0.2); color: #ffb86c; }
+.cat-mcp          { background: rgba(34, 211, 238, 0.2); color: #22d3ee; }
+.cat-dev          { background: rgba(244, 114, 182, 0.2); color: #f472b6; }
+.cat-social       { background: rgba(250, 204, 21, 0.2); color: #facc15; }
+.cat-ai           { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
+.cat-knowledge    { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+.cat-smart        { background: rgba(251, 146, 60, 0.2); color: #fb923c; }
+.cat-data         { background: rgba(96, 165, 250, 0.2); color: #60a5fa; }
+
+/* CAT CHIPS */
 .cat-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 60px;
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 60px;
 }
-
 .cat-chip {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 0.85em;
-    color: #ccc;
-    transition: all 0.3s ease;
+    border-radius: 20px; padding: 6px 14px;
+    font-size: 0.85em; color: #ccc; transition: all 0.3s ease;
 }
+.cat-chip:hover { border-color: rgba(102, 126, 234, 0.3); background: rgba(102, 126, 234, 0.1); }
+.cat-chip strong { color: #667eea; margin-left: 4px; }
 
-.cat-chip:hover {
-    border-color: rgba(102, 126, 234, 0.3);
-    background: rgba(102, 126, 234, 0.1);
-}
-
-.cat-chip strong {
-    color: #667eea;
-    margin-left: 4px;
-}
-
-/* ===== MEMORY ===== */
+/* MEMORY */
 .memory-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-bottom: 60px;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 16px; margin-bottom: 60px;
 }
-
 .memory-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 24px;
-    transition: all 0.3s ease;
+    border-radius: 16px; padding: 24px; transition: all 0.3s ease;
 }
-
 .memory-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(102, 126, 234, 0.3);
+    transform: translateY(-4px); border-color: rgba(102, 126, 234, 0.3);
 }
-
-.memory-card.mem-system {
-    border-left: 3px solid #667eea;
-}
-
-.memory-card.mem-user {
-    border-left: 3px solid #f093fb;
-}
-
+.memory-card.mem-system { border-left: 3px solid #667eea; }
+.memory-card.mem-user   { border-left: 3px solid #f093fb; }
 .memory-label {
-    font-size: 0.8em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+    font-size: 0.8em; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 12px;
 }
-
 .mem-system .memory-label { color: #667eea; }
-.mem-user .memory-label { color: #f093fb; }
+.mem-user   .memory-label { color: #f093fb; }
+.memory-number { font-size: 2.4em; font-weight: 700; color: #e0e0e0; }
+.memory-detail { color: #888; font-size: 0.85em; margin-top: 4px; }
 
-.memory-number {
-    font-size: 2.4em;
-    font-weight: 700;
-    color: #e0e0e0;
-}
-
-.memory-detail {
-    color: #888;
-    font-size: 0.85em;
-    margin-top: 4px;
-}
-
-/* ===== TIMELINE ===== */
+/* TIMELINE (clickable) */
 .timeline {
-    position: relative;
-    padding-left: 32px;
-    margin-bottom: 60px;
+    position: relative; padding-left: 32px; margin-bottom: 60px;
 }
-
 .timeline::before {
-    content: '';
-    position: absolute;
-    left: 8px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg,
-        rgba(102, 126, 234, 0.5),
-        rgba(118, 75, 162, 0.3),
-        rgba(102, 126, 234, 0.05));
+    content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(180deg, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.3), rgba(102, 126, 234, 0.05));
 }
-
 .timeline-item {
-    position: relative;
-    margin-bottom: 24px;
+    position: relative; margin-bottom: 16px;
 }
-
+.timeline-item.clickable > summary {
+    list-style: none; cursor: pointer; border-radius: 12px;
+    user-select: none;
+}
+.timeline-item.clickable > summary::-webkit-details-marker { display: none; }
+.timeline-item.clickable > summary::marker { display: none; }
+.timeline-item.clickable > summary:hover .timeline-card {
+    border-color: rgba(102, 126, 234, 0.4);
+}
 .timeline-dot {
-    position: absolute;
-    left: -28px;
-    top: 6px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: #667eea;
-    border: 3px solid #1a1a2e;
+    position: absolute; left: -28px; top: 14px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #667eea; border: 3px solid #1a1a2e;
     box-shadow: 0 0 12px rgba(102, 126, 234, 0.4);
 }
-
 .future-dot {
-    background: transparent;
-    border: 2px dashed #764ba2;
-    box-shadow: none;
+    background: transparent; border: 2px dashed #764ba2; box-shadow: none;
 }
-
 .timeline-date {
-    font-size: 0.8em;
-    color: #667eea;
-    margin-bottom: 6px;
-    font-weight: 500;
+    font-size: 0.8em; color: #667eea; margin-bottom: 6px; font-weight: 500;
 }
-
 .timeline-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 16px 20px;
-    transition: all 0.3s ease;
+    border-radius: 12px; padding: 16px 20px; transition: all 0.3s ease;
 }
-
 .timeline-card:hover {
     border-color: rgba(102, 126, 234, 0.3);
     background: rgba(102, 126, 234, 0.05);
 }
-
-.future-card {
-    border-style: dashed;
-    opacity: 0.7;
+.timeline-item[open] .timeline-dot {
+    box-shadow: 0 0 16px rgba(102, 126, 234, 0.7);
+    transform: scale(1.15);
 }
-
+.future-card { border-style: dashed; opacity: 0.7; }
 .timeline-title {
-    font-weight: 500;
-    color: #e0e0e0;
-    margin-bottom: 4px;
+    font-weight: 500; color: #e0e0e0; margin-bottom: 4px;
+    display: flex; justify-content: space-between; align-items: center;
 }
-
-.timeline-desc {
-    font-size: 0.85em;
-    color: #888;
+.timeline-desc { font-size: 0.85em; color: #888; }
+.hint { color: #667eea; font-size: 0.85em; font-weight: 400; }
+.timeline-extra {
+    margin-top: 6px; padding: 12px 14px;
+    background: rgba(102, 126, 234, 0.04);
+    border-left: 3px solid #667eea;
+    border-radius: 6px 8px 8px 6px;
 }
+.extra-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 8px; font-size: 0.85em;
+}
+.extra-grid > div {
+    display: flex; justify-content: space-between; gap: 8px;
+    padding: 6px 10px; background: rgba(255, 255, 255, 0.02); border-radius: 6px;
+}
+.extra-grid b { color: #888; font-weight: 500; }
+.extra-grid span { color: #e0e0e0; }
 
-/* ===== CRON ===== */
+/* CRON (clickable) */
 .cron-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 12px;
-    margin-bottom: 60px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px; margin-bottom: 60px;
 }
-
 .cron-item {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 16px;
-    transition: all 0.3s ease;
+    border-radius: 12px; padding: 0; transition: all 0.3s ease;
+}
+.cron-item > summary {
+    list-style: none; cursor: pointer; padding: 16px;
+    border-radius: 12px; user-select: none;
+}
+.cron-item > summary::-webkit-details-marker { display: none; }
+.cron-item > summary::marker { display: none; }
+.cron-item > summary:hover { background: rgba(102, 126, 234, 0.04); }
+.cron-item:hover { border-color: rgba(102, 126, 234, 0.3); }
+.cron-item[open] { border-color: rgba(102, 126, 234, 0.3); }
+.cron-name { font-weight: 500; color: #e0e0e0; margin-bottom: 6px; }
+.cron-meta { font-size: 0.8em; color: #888; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.cron-meta .hint { margin-left: auto; }
+.cron-detail {
+    padding: 0 16px 16px; border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.cron-row {
+    font-size: 0.82em; padding: 6px 0; display: flex; gap: 8px; align-items: flex-start;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
+}
+.cron-row:last-child { border-bottom: none; }
+.cron-row b { color: #888; font-weight: 500; min-width: 80px; }
+.cron-row code {
+    color: #e0e0e0; word-break: break-all; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.92em;
 }
 
-.cron-item:hover {
-    border-color: rgba(102, 126, 234, 0.3);
-    transform: translateY(-2px);
-}
-
-.cron-name {
-    font-weight: 500;
-    color: #e0e0e0;
-    margin-bottom: 6px;
-}
-
-.cron-meta {
-    font-size: 0.8em;
-    color: #888;
-}
-
-/* ===== ARCHIVED ===== */
+/* ARCHIVED */
 .archived-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 60px;
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 60px;
 }
-
 .archived-chip {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 8px;
-    padding: 4px 12px;
-    font-size: 0.8em;
-    color: #666;
+    border-radius: 8px; padding: 4px 12px;
+    font-size: 0.8em; color: #666;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 .footer {
-    text-align: center;
-    padding: 40px 0;
+    text-align: center; padding: 40px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
-    color: #666;
-    font-size: 0.85em;
+    color: #666; font-size: 0.85em;
 }
+.footer a { color: #667eea; text-decoration: none; }
 
-.footer a {
-    color: #667eea;
-    text-decoration: none;
-}
-
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .evolution-card { grid-template-columns: 1fr; }
@@ -478,11 +340,19 @@ body {
     .cron-grid { grid-template-columns: 1fr; }
     .header h1 { font-size: 1.8em; }
 }
-
 @media (max-width: 480px) {
     .stats-grid { grid-template-columns: 1fr; }
     .container { padding: 20px 12px; }
 }
+
+/* Animation when details opens */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.skill-card[open] > .skill-detail,
+.timeline-item[open] > .timeline-extra,
+.cron-item[open] > .cron-detail { animation: slideDown 0.18s ease-out; }
 </style>
 </head>
 <body>
@@ -493,10 +363,10 @@ body {
         <div class="avatar">🧬</div>
         <h1>Hermes 进化记录</h1>
         <div class="subtitle">AI 能力成长追踪 · 从工具到伙伴</div>
-        <div class="update-time">📅 更新于 2026-07-04 09:12 CST</div>
+        <div class="update-time">📅 更新于 2026-07-04 09:26 CST · 点击卡片可展开详情</div>
     </div>
 
-    <!-- STATS GRID -->
+    <!-- STATS -->
     <div class="stats-grid">
         <div class="stat-card">
             <div class="stat-number">101</div>
@@ -507,7 +377,7 @@ body {
             <div class="stat-label">能力分类</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">8</div>
+            <div class="stat-number">1</div>
             <div class="stat-label">定时任务</div>
         </div>
         <div class="stat-card">
@@ -516,7 +386,7 @@ body {
         </div>
     </div>
 
-    <!-- EVOLUTION OVERVIEW -->
+    <!-- OVERVIEW -->
     <div class="evolution-card">
         <div class="evo-item">
             <div class="evo-icon">🛠️</div>
@@ -536,109 +406,229 @@ body {
     </div>
 
     <!-- SKILLS -->
-    <div class="section-title">🛠️ 最活跃的 Skills</div>
+    <div class="section-title">🛠️ 最活跃的 Skills（点击查看详情）</div>
     <div class="skills-grid">
         
-        <div class="skill-card">
-            <div class="skill-header">
-                <span class="skill-name">messaging-delivery-troubleshoot</span>
-                <span class="skill-cat cat-devops">运维</span>
+        <details class="skill-card clickable">
+            <summary>
+                <div class="skill-header">
+                    <span class="skill-name">messaging-delivery-troubleshoot</span>
+                    <span class="skill-cat cat-devops">运维</span>
+                </div>
+                <div class="skill-stats">
+                    <span>📖 使用 65 次</span>
+                    <span>🔧 迭代 98 次</span>
+                    <span class="hint">点击查看 ▾</span>
+                </div>
+            </summary>
+            <div class="skill-detail">
+                <div class="skill-desc">A cron job that says `last_status: ok` but `last_delivery_error: Weixin send failed: iLink sendmessage rate limited: ret=-2` is the canonical &quot;half-broken&quot; state in Hermes. The TG leg succeeded, the WeChat leg silently failed, the user noti…</div>
+                <div class="skill-meta-grid">
+                    <div><b>view_count</b><span>65</span></div>
+                    <div><b>last_activity</b><span>?</span></div>
+                    <div><b>category</b><span>运维</span></div>
+                    <div><b>iteration</b><span>98 次迭代</span></div>
+                </div>
             </div>
-            <div class="skill-stats">
-                <span>📖 使用 65 次</span>
-                <span>🔧 迭代 98 次</span>
+        </details>
+        <details class="skill-card clickable">
+            <summary>
+                <div class="skill-header">
+                    <span class="skill-name">home-network</span>
+                    <span class="skill-cat cat-devops">运维</span>
+                </div>
+                <div class="skill-stats">
+                    <span>📖 使用 40 次</span>
+                    <span>🔧 迭代 45 次</span>
+                    <span class="hint">点击查看 ▾</span>
+                </div>
+            </summary>
+            <div class="skill-detail">
+                <div class="skill-desc">1. **NEVER change any network settings (gateway, DNS, routing, proxy) without explicit user permission.** The user said &quot;你什么都不要设置&quot; — hard rule. If international access is needed, ask what they want. Do NOT act unilaterally.</div>
+                <div class="skill-meta-grid">
+                    <div><b>view_count</b><span>40</span></div>
+                    <div><b>last_activity</b><span>?</span></div>
+                    <div><b>category</b><span>运维</span></div>
+                    <div><b>iteration</b><span>45 次迭代</span></div>
+                </div>
             </div>
-        </div>
-        <div class="skill-card">
-            <div class="skill-header">
-                <span class="skill-name">home-network</span>
-                <span class="skill-cat cat-devops">运维</span>
+        </details>
+        <details class="skill-card clickable">
+            <summary>
+                <div class="skill-header">
+                    <span class="skill-name">sn-image-base</span>
+                    <span class="skill-cat cat-creative">创作</span>
+                </div>
+                <div class="skill-stats">
+                    <span>📖 使用 28 次</span>
+                    <span>🔧 迭代 11 次</span>
+                    <span class="hint">点击查看 ▾</span>
+                </div>
+            </summary>
+            <div class="skill-detail">
+                <div class="skill-desc">```bash</div>
+                <div class="skill-meta-grid">
+                    <div><b>view_count</b><span>28</span></div>
+                    <div><b>last_activity</b><span>?</span></div>
+                    <div><b>category</b><span>创作</span></div>
+                    <div><b>iteration</b><span>11 次迭代</span></div>
+                </div>
             </div>
-            <div class="skill-stats">
-                <span>📖 使用 40 次</span>
-                <span>🔧 迭代 45 次</span>
+        </details>
+        <details class="skill-card clickable">
+            <summary>
+                <div class="skill-header">
+                    <span class="skill-name">cron-watchdog</span>
+                    <span class="skill-cat cat-devops">运维</span>
+                </div>
+                <div class="skill-stats">
+                    <span>📖 使用 23 次</span>
+                    <span>🔧 迭代 10 次</span>
+                    <span class="hint">点击查看 ▾</span>
+                </div>
+            </summary>
+            <div class="skill-detail">
+                <div class="skill-desc">| Cron script characteristic | Need watchdog? | Why |</div>
+                <div class="skill-meta-grid">
+                    <div><b>view_count</b><span>23</span></div>
+                    <div><b>last_activity</b><span>?</span></div>
+                    <div><b>category</b><span>运维</span></div>
+                    <div><b>iteration</b><span>10 次迭代</span></div>
+                </div>
             </div>
-        </div>
-        <div class="skill-card">
-            <div class="skill-header">
-                <span class="skill-name">sn-image-base</span>
-                <span class="skill-cat cat-creative">创作</span>
+        </details>
+        <details class="skill-card clickable">
+            <summary>
+                <div class="skill-header">
+                    <span class="skill-name">youtube-monitor</span>
+                    <span class="skill-cat cat-devops">运维</span>
+                </div>
+                <div class="skill-stats">
+                    <span>📖 使用 22 次</span>
+                    <span>🔧 迭代 19 次</span>
+                    <span class="hint">点击查看 ▾</span>
+                </div>
+            </summary>
+            <div class="skill-detail">
+                <div class="skill-desc">When the user reports:</div>
+                <div class="skill-meta-grid">
+                    <div><b>view_count</b><span>22</span></div>
+                    <div><b>last_activity</b><span>?</span></div>
+                    <div><b>category</b><span>运维</span></div>
+                    <div><b>iteration</b><span>19 次迭代</span></div>
+                </div>
             </div>
-            <div class="skill-stats">
-                <span>📖 使用 28 次</span>
-                <span>🔧 迭代 11 次</span>
+        </details>
+        <details class="skill-card clickable">
+            <summary>
+                <div class="skill-header">
+                    <span class="skill-name">gateway-ops</span>
+                    <span class="skill-cat cat-devops">运维</span>
+                </div>
+                <div class="skill-stats">
+                    <span>📖 使用 21 次</span>
+                    <span>🔧 迭代 27 次</span>
+                    <span class="hint">点击查看 ▾</span>
+                </div>
+            </summary>
+            <div class="skill-detail">
+                <div class="skill-desc">不要在正在发送最终回复的聊天路径中同步重启 gateway。**</div>
+                <div class="skill-meta-grid">
+                    <div><b>view_count</b><span>21</span></div>
+                    <div><b>last_activity</b><span>?</span></div>
+                    <div><b>category</b><span>运维</span></div>
+                    <div><b>iteration</b><span>27 次迭代</span></div>
+                </div>
             </div>
-        </div>
-        <div class="skill-card">
-            <div class="skill-header">
-                <span class="skill-name">cron-watchdog</span>
-                <span class="skill-cat cat-devops">运维</span>
+        </details>
+        <details class="skill-card clickable">
+            <summary>
+                <div class="skill-header">
+                    <span class="skill-name">xianyu-monitor</span>
+                    <span class="skill-cat cat-devops">运维</span>
+                </div>
+                <div class="skill-stats">
+                    <span>📖 使用 20 次</span>
+                    <span>🔧 迭代 17 次</span>
+                    <span class="hint">点击查看 ▾</span>
+                </div>
+            </summary>
+            <div class="skill-detail">
+                <div class="skill-desc">设计理念：价格驱动，非时间驱动。** 不推无意义的定时消息，只有匹配心理价位的商品或降价才推送。</div>
+                <div class="skill-meta-grid">
+                    <div><b>view_count</b><span>8</span></div>
+                    <div><b>last_activity</b><span>?</span></div>
+                    <div><b>category</b><span>运维</span></div>
+                    <div><b>iteration</b><span>17 次迭代</span></div>
+                </div>
             </div>
-            <div class="skill-stats">
-                <span>📖 使用 23 次</span>
-                <span>🔧 迭代 10 次</span>
+        </details>
+        <details class="skill-card clickable">
+            <summary>
+                <div class="skill-header">
+                    <span class="skill-name">agent-reach</span>
+                    <span class="skill-cat cat-research">研究</span>
+                </div>
+                <div class="skill-stats">
+                    <span>📖 使用 18 次</span>
+                    <span>🔧 迭代 11 次</span>
+                    <span class="hint">点击查看 ▾</span>
+                </div>
+            </summary>
+            <div class="skill-detail">
+                <div class="skill-desc">17 平台工具集合。根据用户意图选择对应分类。</div>
+                <div class="skill-meta-grid">
+                    <div><b>view_count</b><span>18</span></div>
+                    <div><b>last_activity</b><span>?</span></div>
+                    <div><b>category</b><span>研究</span></div>
+                    <div><b>iteration</b><span>11 次迭代</span></div>
+                </div>
             </div>
-        </div>
-        <div class="skill-card">
-            <div class="skill-header">
-                <span class="skill-name">youtube-monitor</span>
-                <span class="skill-cat cat-devops">运维</span>
+        </details>
+        <details class="skill-card clickable">
+            <summary>
+                <div class="skill-header">
+                    <span class="skill-name">one-click-travel</span>
+                    <span class="skill-cat cat-creative">创作</span>
+                </div>
+                <div class="skill-stats">
+                    <span>📖 使用 16 次</span>
+                    <span>🔧 迭代 12 次</span>
+                    <span class="hint">点击查看 ▾</span>
+                </div>
+            </summary>
+            <div class="skill-detail">
+                <div class="skill-desc">Generate a self-contained, polished Chinese travel guide HTML page for a destination or cross-city trip.</div>
+                <div class="skill-meta-grid">
+                    <div><b>view_count</b><span>16</span></div>
+                    <div><b>last_activity</b><span>?</span></div>
+                    <div><b>category</b><span>创作</span></div>
+                    <div><b>iteration</b><span>12 次迭代</span></div>
+                </div>
             </div>
-            <div class="skill-stats">
-                <span>📖 使用 22 次</span>
-                <span>🔧 迭代 19 次</span>
+        </details>
+        <details class="skill-card clickable">
+            <summary>
+                <div class="skill-header">
+                    <span class="skill-name">codex-chrome-setup</span>
+                    <span class="skill-cat cat-dev">开发</span>
+                </div>
+                <div class="skill-stats">
+                    <span>📖 使用 15 次</span>
+                    <span>🔧 迭代 19 次</span>
+                    <span class="hint">点击查看 ▾</span>
+                </div>
+            </summary>
+            <div class="skill-detail">
+                <div class="skill-desc">Codex Desktop controls the user&#39;s Chrome browser through this chain:</div>
+                <div class="skill-meta-grid">
+                    <div><b>view_count</b><span>15</span></div>
+                    <div><b>last_activity</b><span>?</span></div>
+                    <div><b>category</b><span>开发</span></div>
+                    <div><b>iteration</b><span>19 次迭代</span></div>
+                </div>
             </div>
-        </div>
-        <div class="skill-card">
-            <div class="skill-header">
-                <span class="skill-name">gateway-ops</span>
-                <span class="skill-cat cat-devops">运维</span>
-            </div>
-            <div class="skill-stats">
-                <span>📖 使用 21 次</span>
-                <span>🔧 迭代 27 次</span>
-            </div>
-        </div>
-        <div class="skill-card">
-            <div class="skill-header">
-                <span class="skill-name">xianyu-monitor</span>
-                <span class="skill-cat cat-devops">运维</span>
-            </div>
-            <div class="skill-stats">
-                <span>📖 使用 20 次</span>
-                <span>🔧 迭代 17 次</span>
-            </div>
-        </div>
-        <div class="skill-card">
-            <div class="skill-header">
-                <span class="skill-name">agent-reach</span>
-                <span class="skill-cat cat-research">研究</span>
-            </div>
-            <div class="skill-stats">
-                <span>📖 使用 18 次</span>
-                <span>🔧 迭代 11 次</span>
-            </div>
-        </div>
-        <div class="skill-card">
-            <div class="skill-header">
-                <span class="skill-name">one-click-travel</span>
-                <span class="skill-cat cat-creative">创作</span>
-            </div>
-            <div class="skill-stats">
-                <span>📖 使用 16 次</span>
-                <span>🔧 迭代 12 次</span>
-            </div>
-        </div>
-        <div class="skill-card">
-            <div class="skill-header">
-                <span class="skill-name">codex-chrome-setup</span>
-                <span class="skill-cat cat-productivity">效率</span>
-            </div>
-            <div class="skill-stats">
-                <span>📖 使用 15 次</span>
-                <span>🔧 迭代 19 次</span>
-            </div>
-        </div>
+        </details>
     </div>
 
     <!-- CATEGORIES -->
@@ -662,168 +652,182 @@ body {
         </div>
     </div>
 
-    <!-- CRON JOBS -->
-    <div class="section-title">⏰ 定时任务 (8 活跃)</div>
+    <!-- CRON -->
+    <div class="section-title">⏰ 定时任务 (1 个 · 点击查看上次运行)</div>
     <div class="cron-grid">
         
-            <div class="cron-item">
-                <div class="cron-name">棒球每日简报</div>
-                <div class="cron-meta">⏰ 0 10 * * * · 📬 telegram:865938482,weixin</div>
-            </div>
-            <div class="cron-item">
-                <div class="cron-name">mlb-daily-report</div>
-                <div class="cron-meta">⏰ 0 12,21 * * * · 📬 telegram:865938482,weixin</div>
-            </div>
-            <div class="cron-item">
-                <div class="cron-name">日本打击技术学习</div>
-                <div class="cron-meta">⏰ 30 8,14,20 * * * · 📬 local</div>
-            </div>
-            <div class="cron-item">
-                <div class="cron-name">youtube-monitor</div>
-                <div class="cron-meta">⏰ 0 9,11,13,15,19,22 * * * · 📬 telegram:865938482,weixin</div>
-            </div>
-            <div class="cron-item">
-                <div class="cron-name">每日天气推送</div>
-                <div class="cron-meta">⏰ 20 7 * * * · 📬 telegram:865938482,weixin</div>
-            </div>
-            <div class="cron-item">
-                <div class="cron-name">每日系统体检</div>
-                <div class="cron-meta">⏰ 30 6 * * * · 📬 local</div>
-            </div>
-            <div class="cron-item">
-                <div class="cron-name">Gateway Watchdog</div>
-                <div class="cron-meta">⏰ */5 * * * * · 📬 local</div>
-            </div>
-            <div class="cron-item">
+        <details class="cron-item clickable">
+            <summary>
                 <div class="cron-name">进化记录每日更新</div>
-                <div class="cron-meta">⏰ 30 8 * * * · 📬 local</div>
+                <div class="cron-meta">⏰ 30 8 * * * · 📬 local · <span class="hint">▾</span></div>
+            </summary>
+            <div class="cron-detail">
+                <div class="cron-row"><b>Last run:</b> <code>2026-07-04T08:30:45.452254+08:00  ok</code></div>
+                <div class="cron-row"><b>Repeat:</b> <code>∞</code></div><div class="cron-row"><b>Next run:</b> <code>2026-07-05T08:30:00+08:00</code></div><div class="cron-row"><b>Script:</b> <code>evolution_update.sh</code></div><div class="cron-row"><b>Mode:</b> <code>no-agent (script stdout delivered directly)</code></div>
             </div>
+        </details>
     </div>
 
     <!-- TIMELINE -->
-    <div class="section-title">📅 进化时间线</div>
+    <div class="section-title">📅 进化时间线（点击查看当日数据）</div>
     <div class="timeline">
         
-            <div class="timeline-item">
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-05-31</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">Hermes 启航</div>
+                        <div class="timeline-title">Hermes 启航 <span class="hint">▾</span></div>
                         <div class="timeline-desc">mac-migration profile 创建，Skill 体系初始化</div>
                     </div>
                 </div>
-            </div>
-            <div class="timeline-item">
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-06-01</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">SenseNova VLM 策略锁定</div>
+                        <div class="timeline-title">SenseNova VLM 策略锁定 <span class="hint">▾</span></div>
                         <div class="timeline-desc">图像视频分析强制走 SenseNova，模型独立/quota 隔离</div>
                     </div>
                 </div>
-            </div>
-            <div class="timeline-item">
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-06-02</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">Cron 体系成型</div>
+                        <div class="timeline-title">Cron 体系成型 <span class="hint">▾</span></div>
                         <div class="timeline-desc">9 个定时任务覆盖棒球/YouTube/天气/体检/闲鱼</div>
                     </div>
                 </div>
-            </div>
-            <div class="timeline-item">
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-06-03</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">AGENTS.md 规则写入</div>
+                        <div class="timeline-title">AGENTS.md 规则写入 <span class="hint">▾</span></div>
                         <div class="timeline-desc">6 条工作规则：改动边界/分步推进/交付清单/验证方法/高风险熔断/任务复盘</div>
                     </div>
                 </div>
-            </div>
-            <div class="timeline-item">
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-06-04</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">Skill 三级分类</div>
+                        <div class="timeline-title">Skill 三级分类 <span class="hint">▾</span></div>
                         <div class="timeline-desc">174 个 Skill 按 Core/Utility/Archive 三级管理，Curator 自动化维护</div>
                     </div>
                 </div>
-            </div>
-            <div class="timeline-item">
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-06-05</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">YouTube Shorts 修复</div>
+                        <div class="timeline-title">YouTube Shorts 修复 <span class="hint">▾</span></div>
                         <div class="timeline-desc">发现 /videos 漏检 Shorts，新增 SHORTS_CHANNELS 监控</div>
                     </div>
                 </div>
-            </div>
-            <div class="timeline-item">
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-06-06</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">音频系统调优</div>
+                        <div class="timeline-title">音频系统调优 <span class="hint">▾</span></div>
                         <div class="timeline-desc">RME ADI-2 DAC + Genelec G3 完整配置，DIP/Loudness/采样率</div>
                     </div>
                 </div>
-            </div>
-            <div class="timeline-item">
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-06-07</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">One-Click Travel 上线</div>
+                        <div class="timeline-title">One-Click Travel 上线 <span class="hint">▾</span></div>
                         <div class="timeline-desc">10 城旅行指南生成，高德地图集成，双模式（Full/Fallback）</div>
                     </div>
                 </div>
-            </div>
-            <div class="timeline-item">
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-06-09</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">微信推送终版修复</div>
+                        <div class="timeline-title">微信推送终版修复 <span class="hint">▾</span></div>
                         <div class="timeline-desc">3 次代码提交：双重追加 bug/真限流冷却/过期防风暴</div>
                     </div>
                 </div>
-            </div>
-            <div class="timeline-item">
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-06-11</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">瑞幸咖啡 Skill</div>
+                        <div class="timeline-title">瑞幸咖啡 Skill <span class="hint">▾</span></div>
                         <div class="timeline-desc">MCP Server 集成，查询/点单/取餐码全流程</div>
                     </div>
                 </div>
-            </div>
-            <div class="timeline-item">
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-06-13</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">Curator 大规模合并</div>
+                        <div class="timeline-title">Curator 大规模合并 <span class="hint">▾</span></div>
                         <div class="timeline-desc">20 个窄 Skill 吸收进 7 个伞形 Skill，归档 12 个</div>
                     </div>
                 </div>
-            </div>
-            <div class="timeline-item">
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="timeline-date">2026-06-14</div>
                     <div class="timeline-card">
-                        <div class="timeline-title">进化可视化页面</div>
+                        <div class="timeline-title">进化可视化页面 <span class="hint">▾</span></div>
                         <div class="timeline-desc">创建 Evolution Dashboard，每日自动采集数据，可视化进化历程</div>
                     </div>
                 </div>
-            </div>
+            </summary>
+        </details>
+        <details class="timeline-item clickable">
+            <summary>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2026-07-04</div>
+                    <div class="timeline-card">
+                        <div class="timeline-title">Dashboard 可点击化 <span class="hint">▾</span></div>
+                        <div class="timeline-desc">Skill / Cron / Timeline / Milestone 全部支持点击展开详情，零 JS 纯 &lt;details&gt;，兼容 gh-pages 静态托管</div>
+                    </div>
+                </div>
+            </summary>
+        </details>
     </div>
 
     <!-- FUTURE -->
